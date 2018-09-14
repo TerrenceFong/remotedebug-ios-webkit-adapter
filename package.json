@@ -1,9 +1,9 @@
 {
-  "name": "remotedebug-ios-webkit-adapter",
-  "productName": "RemoteDebug iOS WebKit Adapter",
+  "name": "ak-ios-webview",
+  "productName": "akulaku ios webview",
   "version": "0.2.2",
   "bin": {
-    "remotedebug_ios_webkit_adapter": "./out/index.js"
+    "ak-ios-webview": "./out/index.js"
   },
   "scripts": {
     "start": "gulp build && node out/index.js",

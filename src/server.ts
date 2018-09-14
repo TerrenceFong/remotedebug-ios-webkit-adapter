@@ -103,8 +103,11 @@ export class ProxyServer extends EventEmitter {
 
         this._es.get('/', (req, res) => {
             debug('server.http.endpoint/')
-            res.json({
-                msg: 'Hello from RemoteDebug iOS WebKit Adapter'
+            // res.json({
+            //     msg: 'Hello from RemoteDebug iOS WebKit Adapter'
+            // });
+            this._adapter.getTargets().then((targets) => {
+                res.json(targets);
             });
         });
 
