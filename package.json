@@ -11,7 +11,9 @@
     "prepublish": "gulp build",
     "watch": "gulp watch",
     "test": "gulp test",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "ios8": "npm start -- --ios=8",
+    "ios11": "npm start -- --ios=11"
   },
   "dependencies": {
     "@types/express": "^4.0.34",

@@ -64,7 +64,7 @@ export class IOSAdapter extends AdapterCollection {
                     }).catch((err) => {
                         // Device version detection failed, using fallback
                         Logger.log(`error.iosAdapter.getTargets.getDeviceVersion.failed.fallback, device=${d}`);
-                        d.version = '9.3.0';
+                        d.version = 'NaN';
                         return Promise.resolve(d);
                     });
                 }
@@ -144,7 +144,9 @@ export class IOSAdapter extends AdapterCollection {
         return new Promise((resolve, reject) => {
             if (os.platform() === 'win32') {
                 const x64 = os.arch() === 'x64';
-                const proxy = x64 ? path.resolve(__dirname, process.env.USERPROFILE + '/scoop/apps/ios-webkit-debug-proxy/current/ios_webkit_debug_proxy.exe') : path.resolve(__dirname, process.env.USERPROFILE + '/AppData/Roaming/npm/node_modules/vs-libimobile/lib/ios_webkit_debug_proxy.exe');
+                const iosVersion = process.env.ios;
+                // const proxy = x64 ? path.resolve(__dirname, process.env.USERPROFILE + '/scoop/apps/ios-webkit-debug-proxy/current/ios_webkit_debug_proxy.exe') : path.resolve(__dirname, process.env.USERPROFILE + '/AppData/Roaming/npm/node_modules/vs-libimobile/lib/ios_webkit_debug_proxy.exe');
+                const proxy = path.resolve(__dirname, iosVersion === '8' ? '../../node_modules/vs-libimobile/lib/ios_webkit_debug_proxy.exe' : '../../plugin/ios11/ios_webkit_debug_proxy.exe');
                 try {
                     fs.statSync(proxy);
                     resolve(proxy)
@@ -168,7 +170,9 @@ export class IOSAdapter extends AdapterCollection {
         debug(`iOSAdapter.getDeviceInfoPath`)
         return new Promise((resolve, reject) => {
             if (os.platform() === 'win32') {
-                const proxy = path.resolve(__dirname, process.env.USERPROFILE + '/AppData/Roaming/npm/node_modules/vs-libimobile/lib/ideviceinfo.exe');
+                const iosVersion = process.env.ios;
+                // const proxy = path.resolve(__dirname, process.env.USERPROFILE + '/AppData/Roaming/npm/node_modules/vs-libimobile/lib/ideviceinfo.exe');
+                const proxy = path.resolve(__dirname, iosVersion === '8' ? '../../node_modules/vs-libimobile/lib/ideviceinfo.exe' : '../../plugin/ios11/ideviceinfo.exe');
                 try {
                     fs.statSync(proxy);
                     resolve(proxy);
@@ -197,7 +201,7 @@ export class IOSAdapter extends AdapterCollection {
         if (!proc.err) {
             deviceVersion = proc.stdout.trim();
         }
-
+        
         return deviceVersion;
     };
 

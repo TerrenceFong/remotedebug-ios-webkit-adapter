@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "iOS Web",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9000,
+      "url": "http://localhost:8080/*",
+      "webRoot": "${workspaceFolder}/src"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch via NPM",

@@ -22,6 +22,12 @@ if (argv.help) {
   process.exit(0);
 }
 
+if (argv.ios) {
+  process.env.ios = argv.ios;
+} else {
+  process.env.ios = '8';
+}
+
 const server = new ProxyServer();
 
 server.run(argv.port).then(port => {

@@ -6,6 +6,7 @@ export interface ITarget {
     appId?: string;
     description: string;
     devtoolsFrontendUrl: string;
+    devtoolsFrontendUrls: string;
     faviconUrl: string;
     id: string;
     title: string;
