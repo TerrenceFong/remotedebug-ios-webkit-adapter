@@ -1,18 +1,16 @@
-# RemoteDebug iOS WebKit Adapter
+# AK IOS Webview
 
-[![Build Status](https://travis-ci.org/RemoteDebug/remotedebug-ios-webkit-adapter.svg?branch=master)](https://travis-ci.org/RemoteDebug/remotedebug-ios-webkit-adapter) <a href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter/releases"><img src="https://img.shields.io/github/release/RemoteDebug/remotedebug-ios-webkit-adapter.svg" alt="Release"></a>
+AK IOS Webview 是基于 [RemoteDebug iOS WebKit Adapter](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter) 进行了二次封装。之前由于 RemoteDebug iOS WebKit Adapter 的 npm 和 github 版本不同步，按照文档使用的时会出现 ios 版本不同导致呈现的效果不同。clone 了原库进行 ios 版本兼容（最新的ios 12不支持，目测覆盖的测试是 ios 8 ~ 11）
 
-RemoteDebug iOS WebKit Adapter is an protocol adapter that Safari and WebViews on iOS to be debugged from tools like VS Code, Chrome DevTools, Mozilla Debugger.html and other tools compatible with the Chrome Debugging Protocol.
+![](https://raw.githubusercontent.com/TerrenceFong/remotedebug-ios-webkit-adapter/master/.readme/overview.png)
 
-![](.readme/overview.png)
+PS：本文只教会怎么使用，如果想看更详细的内容，直接去[原仓库](https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter)查看
 
-Read more in the introduction blog post on Medium: [Hello RemoteDebug iOS WebKit Adapter: iOS web debugging with Chrome DevTools, VS Code & Mozilla Debugger.html 📡📱](https://medium.com/@auchenberg/hello-remotedebug-ios-webkit-adapter-ios-web-debugging-with-chrome-devtools-vs-code-mozilla-2a8553df7465)
+## 开始
 
-## Getting Started
+### 1) 安装依赖
 
-### 1) Install dependencies
-
-Before you use this adapter you need to make sure you have the [latest version of iTunes](http://www.apple.com/itunes/download/) installed, as we need a few libraries provided by iTunes to talk to the iOS devices.
+在使用本库前，需要自行安装最新版的 [iTunes](http://www.apple.com/itunes/download/) 或 [iTools](https://www.itools.cn/)（效果一样，我们需要的只是它们提供的驱动：Apple Mobile Device Service 和 Bonjour 服务）。安装成功后在 win + r 里输入 services.msc。查看对应的驱动是否已启动，均显示"已启动"即可。
 
 #### Linux
 
